@@ -1,3 +1,7 @@
+# Discord Server for Dev Discussions
+
+https://discord.gg/TerPNMwM
+
 # Hyperlocal Search
 
 Lets you search Zepto / Instamart / Blinkit all at once
