@@ -21,14 +21,13 @@ If you're using a Unix-based system (Linux/Mac), you might need to use `python3`
 
 ### Setting Up the Environment
 
-``` Create a Virtual Environment
+#### Create a Virtual Environment
 
 Navigate to your project directory:
 
 
 ```
 git clone <repo-url>
-```
 
 cd hyperlocal-search
 ```
@@ -41,7 +40,7 @@ python -m venv env
 
 On Unix-based systems, you might need to use `python3` instead of `python`.
 
-``` Activate the Virtual Environment
+### Activate the Virtual Environment
 
 On Windows:
 
@@ -57,7 +56,7 @@ source env/bin/activate
 
 After activation, your terminal prompt will change to indicate that you are now working inside the virtual environment. It's now set up to run and develop the project in isolation from the rest of your system.
 
-``` Install Required Packages
+### Install Required Packages
 
 With the virtual environment activated, install the project dependencies using `pip`:
 
