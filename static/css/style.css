@@ -1,0 +1,259 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px; /* Add padding to the body */
+}
+
+h2.zepto {
+    color: purple;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Add shadow to make text more readable */
+}
+
+h2.blinkit {
+    color: #DAA520;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Add shadow to make text more readable */
+}
+h2.instamart {
+    color: orange;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Add shadow to make text more readable */
+}
+
+h2.dmart {
+    color: green;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Add shadow to make text more readable */
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjusts spacing dynamically */
+}
+
+.product {
+    flex: 1 1 200px; /* Flex items can grow and shrink from a base width of 200px */
+    margin: 10px;
+    word-wrap: break-word;
+    min-height: 200px;
+}
+.product.zepto {
+    /* border: 2px solid; */
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px; /* Adjusted for rounded borders */
+}
+
+.product.blinkit {
+    /* border: 2px solid; */
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left, #f9d423, #ffdd00);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px; /* Adjusted for rounded borders */
+}
+
+.product.instamart {
+    /* border: 2px solid; */
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left, red, orange);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px; /* Adjusted for rounded borders */
+}
+
+.product.dmart {
+    /* border: 2px solid; */
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left, green, rgb(86, 189, 113));
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px; /* Adjusted for rounded borders */
+}
+.product img {
+    max-width: 100px;
+    border-radius: 10px; /* Rounded borders for images */
+}
+/* Responsive adjustments */
+@media screen and (max-width: 768px)  {
+    /* Increase font size for better visibility on mobile */
+    /* Custom styles that override Bootstrap */
+    body {
+        font-size: 1rem!important; /* Adjust base font size */
+    }
+
+    p {
+        font-size: 1rem; /* Specific element override */
+    }
+
+    /* Adjust the search bar size on mobile */
+    .form-field {
+        font-size: 20px!important; /* Larger font size for the search bar */
+    }
+
+    /* Ensure only two items per row on mobile for products */
+    .product {
+        flex: 0 1 calc(50% - 20px) !important; /* Adjust this calculation based on your margin */
+    }
+    footer p{
+        font-size: 0.64rem!important;
+    }
+    .btn_get_two {
+        font-size: 0.64rem;
+    }
+}
+
+/* Further adjustments for smaller mobile screens */
+@media screen and (max-width: 480px) {
+    .form-field {
+        font-size:20px !important; /* Adjust as needed for very small screens */
+    }
+}
+
+:root {
+    --input-color: #99a3ba;
+    --input-border: #cdd9ed;
+    --input-background: #fff;
+    --input-placeholder: #cbd1dc;
+    --input-border-focus: #275efe;
+    --group-color: var(--input-color);
+    --group-border: var(--input-border);
+    --group-background: #eef4ff;
+    --group-color-focus: #fff;
+    --group-border-focus: var(--input-border-focus);
+    --group-background-focus: #678efe;
+  }
+  
+  .form-field {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    color: var(--input-color);
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+    transition: border 0.3s ease;
+  }
+  .form-field::-moz-placeholder {
+    color: var(--input-placeholder);
+  }
+  .form-field:-ms-input-placeholder {
+    color: var(--input-placeholder);
+  }
+  .form-field::placeholder {
+    color: var(--input-placeholder);
+  }
+  .form-field:focus {
+    outline: none;
+    border-color: var(--input-border-focus);
+  }
+  
+  .form-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .form-group > span,
+  .form-group .form-field {
+    white-space: nowrap;
+    display: block;
+  }
+  .form-group > span:not(:first-child):not(:last-child),
+  .form-group .form-field:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  .form-group > span:first-child,
+  .form-group .form-field:first-child {
+    border-radius: 6px 0 0 6px;
+  }
+  .form-group > span:last-child,
+  .form-group .form-field:last-child {
+    border-radius: 0 6px 6px 0;
+  }
+  .form-group > span:not(:first-child),
+  .form-group .form-field:not(:first-child) {
+    margin-left: -1px;
+  }
+  .form-group .form-field {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .form-group > span {
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 25px;
+    color: var(--group-color);
+    background: var(--group-background);
+    border: 1px solid var(--group-border);
+    transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
+  }
+  .form-group > button {
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 25px;
+    color: var(--group-color);
+    background: var(--group-background);
+    border: 1px solid var(--group-border);
+    transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
+    border-radius: 0 6px 6px 0;
+  }
+  .form-group:focus-within > span {
+    color: var(--group-color-focus);
+    background: var(--group-background-focus);
+    border-color: var(--group-border-focus);
+  }
+  .form-group:focus-within > button {
+    color: var(--group-color-focus);
+    background: var(--group-background-focus);
+    border-color: var(--group-border-focus);
+  }
+  html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  * {
+    box-sizing: inherit;
+  }
+  *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  body {
+    min-height: 100vh;
+    font-family: "Mukta Malar", Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #f5f9ff;
+  }
+  body .form-group {
+    max-width: 360px;
+  }
+  body .form-group:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  #locationSelect {
+    max-width: 300px; /* Adjust max-width as needed */
+    width: 100%;
+}
+
+
+

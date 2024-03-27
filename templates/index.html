@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>9 minutes or maybe not</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <!-- Dropdown for selecting location -->
+    <select id="locationSelect" class="form-field">
+        <option value="koramangala">Koramangala</option>
+        <option value="whitefield">Whitefield</option>
+        <option value="indiranagar">Indiranagar</option>
+        <option value="marathalli">Marathalli</option>
+        <option value="malleswaram">Malleswaram</option>
+        <option value="hebbal">Hebbal</option>
+        <option value="hsr layout">HSR Layout</option>
+    </select>
+    <br>
+    <div class="form-group">
+        <span>Looking for</span>
+        <input id="searchField" class="form-field" type="text" placeholder="redbull">
+
+        <button id="searchBtn">Search</button>
+    </div>
+    <script>
+        document.getElementById('searchField').addEventListener('keypress', function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById('searchBtn').click();
+            }
+        });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        function getQueryParam(param) {
+            var searchParams = new URLSearchParams(window.location.search);
+            return searchParams.get(param);
+        }
+
+        var selectedLocation = getQueryParam('location');
+        var locationSelect = document.getElementById('locationSelect');
+        if (selectedLocation) {
+            // Check if the selectedLocation matches one of the options
+            var isValidOption = Array.from(locationSelect.options).some(function(option) {
+                return option.value === selectedLocation;
+            });
+
+            // If it's a valid option, set it as selected
+            if (isValidOption) {
+                locationSelect.value = selectedLocation;
+            } else {
+                // If not valid, you can set a default value or do nothing
+                // For example, setting it to a default option's value
+                locationSelect.value = 'Koramangala';
+                // Or simply do nothing, which will keep the dropdown at its initial state
+            }
+        }
+
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            var searchText = document.getElementById('searchField').value;
+            var selectedLocation = document.getElementById('locationSelect').value;
+            var currentDomain = window.location.protocol + '//' + window.location.host;
+            var newUrl = currentDomain + '/?query=' + encodeURIComponent(searchText) + '&location=' + encodeURIComponent(selectedLocation);
+            window.location.href = newUrl;
+        });
+    });
+    </script>
+    
+    <h2 class="zepto">Zepto Products</h2>
+    <div class="products zepto">
+        {% for product in zepto_products %}
+            <div class="product" {% if loop.index > 5 %}style="display:none;"{% endif %}>
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+                <p> {{ product.name }}</p>
+                <p> {{ product.variant }}</p>
+                <p>Selling Price: <b>{{ product.selling_price }}</b></p>
+            </div>
+        {% endfor %}
+        {% if zepto_products|length > 5 %}
+            <button class="show-more" data-target="zepto">Show More</button>
+        {% endif %}
+    </div>
+    <h2 class="blinkit">Blinkit Products</h2>
+    <div class="products blinkit">
+        {% for product in blinkit_products %}
+            <div class="product" {% if loop.index > 5 %}style="display:none;"{% endif %}>
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+                <p> {{ product.name }}</p>
+                <p> {{ product.variant }}</p>
+                <p>Selling Price: <b>{{ product.selling_price }}</b></p>
+            </div>
+        {% endfor %}
+        {% if blinkit_products|length > 5 %}
+            <button class="show-more" data-target="blinkit">Show More</button>
+        {% endif %}
+    </div>
+    <h2 class="instamart">Instamart Products</h2>
+    <div class="products instamart">
+        {% for product in instamart_products %}
+            <div class="product" {% if loop.index > 5 %}style="display:none;"{% endif %}>
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+                <p> {{ product.name }}</p>
+                <p> {{ product.variant }}</p>
+                <p>Selling Price: <b>{{ product.selling_price }}</b></p>
+            </div>
+        {% endfor %}
+        {% if instamart_products|length > 5 %}
+            <button class="show-more" data-target="instamart">Show More</button>
+        {% endif %}
+    </div>
+    <h2 class="dmart">Dmart Products </h2>
+    <h5> (We only support Koramangala for Dmart) </h5>
+    <div class="products dmart">
+        {% for product in dmart_products %}
+            <div class="product" {% if loop.index > 5 %}style="display:none;"{% endif %}>
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+                <p> {{ product.name }}</p>
+                <p> {{ product.variant }}</p>
+                <p>Selling Price: <b>{{ product.selling_price }}</b></p>
+            </div>
+        {% endfor %}
+        {% if dmart_products|length > 5 %}
+            <button class="show-more" data-target="dmart">Show More</button>
+        {% endif %}
+    </div>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.show-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const target = this.getAttribute('data-target');
+                // Target the correct products container
+                const container = document.querySelector(`div.products.${target}`);
+                // Select all product divs within the targeted container
+                const products = container.querySelectorAll(`div.product`);
+                products.forEach((product, index) => {
+                    if (index >= 5) { // Show products beyond the first 5
+                        product.style.display = 'block';
+                    }
+                });
+                this.style.display = 'none'; // Hide the "Show More" button after clicking
+            });
+        });
+    });
+    </script>
+</html>
