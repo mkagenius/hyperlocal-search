@@ -1,4 +1,3 @@
-
 # Discord Server for Dev Discussions
 
 [https://discord.gg/TerPNMwM](https://discord.gg/QqSPN5a9)
