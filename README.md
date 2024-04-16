@@ -85,7 +85,7 @@ This command starts the application with 3 worker processes, binding it to all n
 When you're done working on the project, you can deactivate the virtual environment by running:
 
 ```
-deactivate
+deactivate:
 ```
 
 This command will return you to your system's global Python environment.
